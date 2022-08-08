@@ -46,9 +46,8 @@ const Banner = (props) => {
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div>
-          <span id="get-part">A place to </span>
-          <span id="part-two" onClick={props.click}>
-            get
+          <span id="get-part" onClick={props.click}>
+            A place to get{" "}
           </span>
           {props.clicked ? searchHTML : null}
           <span> the cool stuff.</span>
