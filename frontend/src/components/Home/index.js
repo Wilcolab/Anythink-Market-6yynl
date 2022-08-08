@@ -30,6 +30,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Home extends React.Component {
+  constructor(s) {
+    super(s);
+    this.state = {
+      clicked: false,
+    };
+  }
   componentWillMount() {
     const tab = "all";
     const itemsPromise = agent.Items.all;
@@ -45,10 +51,21 @@ class Home extends React.Component {
     this.props.onUnload();
   }
 
+  clicked = () => {
+    this.setState({
+      ...this.state,
+      clicked: true,
+    });
+  };
+
   render() {
     return (
       <div className="home-page">
-        <Banner onTypeSearch={this.props.onTypeSearch} />
+        <Banner
+          click={this.clicked}
+          clicked={this.state.clicked}
+          onTypeSearch={this.props.onTypeSearch}
+        />
 
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
